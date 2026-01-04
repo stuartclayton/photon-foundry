@@ -1,6 +1,6 @@
 # Photon Foundry Website
 
-A single-page website for **Photon Foundry**, the software development company behind [Raygun Laser](https://raygun-laser.com).
+A single-page website for **Photon Foundry**, the software development company behind [Raygun Laser](https://www.raygun-laser.com).
 
 ## Overview
 
