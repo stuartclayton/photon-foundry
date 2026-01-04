@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Photon Foundry - Creators of Raygun Laser, professional cross-platform laser light show design software.">
+    <title>Photon Foundry - Professional Creative Tools for Visual Production</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary-color: #64748b;
+            --accent-color: #0ea5e9;
+            --background: #ffffff;
+            --background-subtle: #f8fafc;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: var(--background-subtle);
+            border-bottom: 1px solid var(--border-color);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .logo-container {
+            margin-bottom: 1.5rem;
+        }
+
+        .logo {
+            max-width: 350px;
+            width: 100%;
+            height: auto;
+        }
+
+        .tagline {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        section {
+            margin-bottom: 5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .product-card {
+            background: var(--background);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .feature-item {
+            padding: 1rem 0;
+        }
+
+        .feature-item strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .feature-item p {
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .cta-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .about-section {
+            background: var(--background-subtle);
+            border-left: 4px solid var(--primary-color);
+            padding: 2.5rem;
+            border-radius: 8px;
+        }
+
+        .about-section h2 {
+            margin-top: 0;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .info-item {
+            text-align: left;
+        }
+
+        .info-item strong {
+            display: block;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .info-item p {
+            margin: 0;
+        }
+
+        .contact-section {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--background-subtle);
+            border-radius: 8px;
+        }
+
+        .contact-section a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .contact-section a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid var(--border-color);
+            background: var(--background-subtle);
+        }
+
+        footer p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin: 0.5rem 0;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 2rem 1rem;
+            }
+
+            main {
+                padding: 2rem 1rem;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+            }
+
+            .product-card {
+                padding: 1.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="assets/logo.svg" alt="Photon Foundry Logo" class="logo">
+        </div>
+        <p class="tagline">Developing cutting-edge creative tools for visual production professionals</p>
+    </header>
+
+    <main>
+        <section id="products">
+            <h2>Our Products</h2>
+            
+            <div class="product-card">
+                <h3>Raygun Laser</h3>
+                <p>The first truly cross-platform laser light show design software. Built for professionals and enthusiasts alike, Raygun Laser brings a modern workflow and powerful features to laser show creation.</p>
+                
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <strong>Cross-Platform</strong>
+                        <p>Native support for Mac, Windows, and Web</p>
+                    </div>
+                    <div class="feature-item">
+                        <strong>Hardware-Agnostic</strong>
+                        <p>Works with any DAC (Digital-to-Analog Converter)</p>
+                    </div>
+                    <div class="feature-item">
+                        <strong>Modern Workflow</strong>
+                        <p>Streamlined, intuitive drag-and-drop interface</p>
+                    </div>
+                    <div class="feature-item">
+                        <strong>Advanced Timing</strong>
+                        <p>Precise beat matching and synchronization</p>
+                    </div>
+                    <div class="feature-item">
+                        <strong>SVG Graphics</strong>
+                        <p>Hardware-independent vector graphics support</p>
+                    </div>
+                    <div class="feature-item">
+                        <strong>Professional Grade</strong>
+                        <p>Built for industry professionals and serious hobbyists</p>
+                    </div>
+                </div>
+
+                <p style="margin-top: 2rem;">
+                    <a href="https://raygun-laser.com" class="cta-button">Learn More About Raygun Laser</a>
+                </p>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <h2>About Photon Foundry</h2>
+            <p>Photon Foundry develops cutting-edge software tools for creative professionals in the visual production industry. We believe in creating powerful, accessible tools that work across all platforms and integrate seamlessly with existing workflows.</p>
+            
+            <p>Our mission is to democratize professional-grade creative tools, making advanced laser show design and visual production accessible to both industry veterans and passionate newcomers.</p>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <strong>Founded</strong>
+                    <p>2025</p>
+                </div>
+                <div class="info-item">
+                    <strong>Focus Areas</strong>
+                    <p>Laser Show Design<br>Visual Production Software<br>Creative Tools</p>
+                </div>
+                <div class="info-item">
+                    <strong>Approach</strong>
+                    <p>Cross-platform solutions<br>Hardware-independent design<br>User-centered workflows</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <h2>Get In Touch</h2>
+            <p>Interested in our products or want to learn more about what we're building?</p>
+            <p style="margin-top: 1.5rem;">
+                <a href="mailto:info@photonfoundry.com">info@photonfoundry.com</a>
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Photon Foundry. All rights reserved.</p>
+        <p>Building the future of visual production tools.</p>
+    </footer>
+</body>
+</html>
