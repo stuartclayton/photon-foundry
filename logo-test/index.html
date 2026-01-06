@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Raygun Logo Composite Test</title>
+    <style>
+      :root {
+        --bg-1: #0b0f1a;
+        --bg-2: #1a1630;
+        --ink: #e9f0ff;
+        --panel: rgba(12, 14, 25, 0.45);
+        --stroke: rgba(255, 255, 255, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top, rgba(118, 110, 255, 0.15), transparent 45%),
+          radial-gradient(circle at 30% 70%, rgba(255, 120, 163, 0.18), transparent 55%),
+          linear-gradient(180deg, var(--bg-2), var(--bg-1));
+        font-family: "Orbitron", "Eurostile", "Rajdhani", sans-serif;
+      }
+
+      .stage {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 36px;
+        padding: 48px 24px 56px;
+      }
+
+      .logo-card {
+        display: grid;
+        gap: 18px;
+        justify-items: center;
+        padding: 24px 28px;
+        border-radius: 20px;
+        background: var(--panel);
+        border: 1px solid var(--stroke);
+        backdrop-filter: blur(10px);
+      }
+
+      .label {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        opacity: 0.75;
+      }
+
+      .logo-composite {
+        position: relative;
+        width: min(340px, 78vw);
+        animation: float 4.6s ease-in-out infinite;
+      }
+
+      .logo-card:nth-child(2) .logo-composite {
+        animation-delay: -1.4s;
+      }
+
+      .logo-card:nth-child(3) .logo-composite {
+        animation-delay: -2.6s;
+      }
+
+      .logo-base {
+        display: block;
+        width: 100%;
+        height: auto;
+        position: relative;
+        z-index: 1;
+        filter:
+          drop-shadow(0 0 18px rgba(120, 96, 255, 0.45))
+          drop-shadow(0 0 36px rgba(255, 92, 155, 0.25));
+      }
+
+      .logo-shine {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        pointer-events: none;
+        background: linear-gradient(
+          120deg,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0) 32%,
+          rgba(255, 255, 255, 0.85) 50%,
+          rgba(255, 255, 255, 0) 68%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        background-size: 220% 100%;
+        background-position: -140% 0;
+        mix-blend-mode: screen;
+        animation: shine-sweep 6.5s ease-in-out infinite;
+        animation-delay: var(--shine-delay, 0s);
+        mask-image: url("assets/raygun-logo-mask.svg");
+        mask-repeat: no-repeat;
+        mask-size: 100% 100%;
+        mask-position: center;
+        mask-mode: alpha;
+        -webkit-mask-image: url("assets/raygun-logo-mask.svg");
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-size: 100% 100%;
+        -webkit-mask-position: center;
+      }
+
+      .logo-shine::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          120deg,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0) 45.5%,
+          rgba(255, 255, 255, 1) 50%,
+          rgba(255, 255, 255, 0) 54.5%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        background-size: 320% 100%;
+        background-position: -200% 0;
+        mix-blend-mode: screen;
+        animation: shine-sweep 6.5s ease-in-out infinite;
+        animation-delay: calc(var(--shine-delay, 0s) + 0.24s);
+      }
+
+      .logo-tag {
+        position: absolute;
+        left: var(--tag-left, 0%);
+        top: var(--tag-top, 0%);
+        width: var(--tag-width, 50%);
+        height: auto;
+        z-index: 3;
+        filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.35));
+        animation: tag-pulse 3.2s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes tag-pulse {
+        0%,
+        100% {
+          transform: scale(0.98);
+          opacity: 0.9;
+        }
+        50% {
+          transform: scale(1.03);
+          opacity: 1;
+        }
+      }
+
+      @keyframes shine-sweep {
+        0%,
+        60% {
+          background-position: -140% 0;
+          opacity: 0;
+        }
+        80% {
+          opacity: 0.9;
+        }
+        100% {
+          background-position: 120% 0;
+          opacity: 0;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .logo-composite,
+        .logo-tag,
+        .logo-shine {
+          animation: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="stage">
+      <section class="logo-card">
+        <div class="logo-composite">
+          <img class="logo-base" src="assets/raygun-logo.svg" alt="Raygun logo">
+          <span class="logo-shine" aria-hidden="true"></span>
+        </div>
+        <div class="label">Raygun Laser</div>
+      </section>
+
+      <section class="logo-card">
+        <div class="logo-composite">
+          <img class="logo-base" src="assets/raygun-logo.svg" alt="Raygun logo">
+          <span class="logo-shine" aria-hidden="true" style="--shine-delay: -1.4s;"></span>
+          <img
+            class="logo-tag"
+            src="assets/light-painter-text.svg"
+            alt="Light Painter"
+            style="--tag-left: 20.3%; --tag-top: 39%; --tag-width: 85.40%;"
+          >
+        </div>
+        <div class="label">Raygun Light Painter</div>
+      </section>
+
+      <section class="logo-card">
+        <div class="logo-composite">
+          <img class="logo-base" src="assets/raygun-logo.svg" alt="Raygun logo">
+          <span class="logo-shine" aria-hidden="true" style="--shine-delay: -2.6s;"></span>
+          <img
+            class="logo-tag"
+            src="assets/live-fire-text.svg"
+            alt="Live Fire"
+            style="--tag-left: 22%; --tag-top: 44.4%; --tag-width: 78%;"
+          >
+        </div>
+        <div class="label">Raygun Live Fire</div>
+      </section>
+    </main>
+  </body>
+</html>
