@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raygun Laser - Interactive Demo</title>
+    <meta name="description" content="Interactive WebGL laser show demo with mouse tracking and particle effects">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #000;
+        }
+        
+        #laser-canvas {
+            display: block;
+            width: 100vw;
+            height: 100vh;
+            cursor: crosshair;
+        }
+        
+        .instructions {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            pointer-events: none;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            z-index: 10;
+        }
+        
+        .instructions p {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="instructions">
+        <p>🖱️ Move mouse to control particles</p>
+        <p>🖱️ Click to focus/unfocus</p>
+    </div>
+    
+    <!-- Full-screen WebGL laser canvas -->
+    <canvas 
+        id="laser-canvas" 
+        data-smoke-texture="https://cdn.prod.website-files.com/6951cf8944ffbcafe005dba0/6958cd23e8efb53e2cc12af5_smoke.txt"
+        width="2000" 
+        height="2000">
+    </canvas>
+    
+    <!-- WebGL Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/twgl.js@5.5.4/dist/5.x/twgl-full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/MotionPathPlugin.min.js"></script>
+    
+    <!-- Raygun Laser Renderer -->
+    <script src="laser-renderer.js"></script>
+</body>
+</html>
