@@ -15,20 +15,24 @@
         
         html, body {
             width: 100%;
-            height: 100%;
-            overflow: hidden;
+            min-height: 300vh; /* Make page 3x viewport height for scrolling */
+            overflow-x: hidden;
+            overflow-y: auto;
             background: #000;
         }
         
         #laser-canvas {
-            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100vw;
             height: 100vh;
             cursor: crosshair;
+            z-index: 0;
         }
         
         .instructions {
-            position: absolute;
+            position: fixed;
             top: 20px;
             left: 20px;
             color: rgba(255, 255, 255, 0.7);
@@ -42,12 +46,36 @@
         .instructions p {
             margin-bottom: 8px;
         }
+        
+        .scroll-hint {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.5);
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            pointer-events: none;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            z-index: 10;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
     </style>
 </head>
 <body>
     <div class="instructions">
         <p>🖱️ Move mouse to control particles</p>
         <p>🖱️ Click to focus/unfocus</p>
+        <p>📜 Scroll to pan camera vertically</p>
+    </div>
+    
+    <div class="scroll-hint">
+        ↓ Scroll to explore ↓
     </div>
     
     <!-- Full-screen WebGL laser canvas -->
